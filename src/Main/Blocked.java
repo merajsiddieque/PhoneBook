@@ -170,7 +170,7 @@ public class Blocked extends javax.swing.JFrame {
             }
         });
 
-        jLSearchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SearchContact/Screenshot 2024-11-16 15321.png"))); // NOI18N
+        jLSearchIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/searchicons.png"))); // NOI18N
 
         jButtonSearch.setFont(new java.awt.Font("Times New Roman", 3, 14)); // NOI18N
         jButtonSearch.setText("Search");
@@ -291,6 +291,11 @@ public class Blocked extends javax.swing.JFrame {
         jMenuBar1.add(menuAboutUs);
 
         menuHelp.setText("Help");
+        menuHelp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuHelpMouseClicked(evt);
+            }
+        });
         menuHelp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuHelpActionPerformed(evt);
@@ -466,6 +471,12 @@ public class Blocked extends javax.swing.JFrame {
            }
         }
     }//GEN-LAST:event_jLabelDeleteMouseClicked
+
+    private void menuHelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuHelpMouseClicked
+        new Help(user).setVisible(true);
+        this.dispose();
+// TODO add your handling code here:
+    }//GEN-LAST:event_menuHelpMouseClicked
 
     /**
      * @param args the command line arguments

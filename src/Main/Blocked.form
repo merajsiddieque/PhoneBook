@@ -30,6 +30,7 @@
             <Property name="text" type="java.lang.String" value="Help"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuHelpMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuHelpActionPerformed"/>
           </Events>
         </Menu>
@@ -265,7 +266,7 @@
             <Component class="javax.swing.JLabel" name="jLSearchIcon">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/SearchContact/Screenshot 2024-11-16 15321.png"/>
+                  <Image iconType="3" name="/images/searchicons.png"/>
                 </Property>
               </Properties>
             </Component>

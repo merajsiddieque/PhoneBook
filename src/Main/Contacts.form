@@ -244,11 +244,11 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButtonSearch" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                      <Component id="jtxtSeach" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
                                           <Component id="jLSearchIcon" min="-2" pref="17" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                          <Component id="jtxtSeach" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -278,7 +278,7 @@
             <Component class="javax.swing.JLabel" name="jLSearchIcon">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/SearchContact/Screenshot 2024-11-16 15321.png"/>
+                  <Image iconType="3" name="/images/searchicons.png"/>
                 </Property>
               </Properties>
             </Component>
