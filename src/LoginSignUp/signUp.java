@@ -113,7 +113,8 @@ public class signUp extends javax.swing.JFrame {
         login = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("PhoneBook");
+        setTitle("PhoneBook-SignUp");
+        setResizable(false);
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         MainPanel.setBackground(new java.awt.Color(51, 255, 255));

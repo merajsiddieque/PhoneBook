@@ -6,8 +6,11 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="MenuHome">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Home "/>
+            <Property name="text" type="java.lang.String" value="New"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MenuHomeMouseClicked"/>
+          </Events>
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuSignOut">
           <Properties>
@@ -40,6 +43,7 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="PhoneBook-All Contacts"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
@@ -221,6 +225,8 @@
                       <Component id="jLabelBlock" min="-2" pref="31" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jLabelFavourite" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jLabelWelcome" min="-2" pref="215" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="jLSearchIcon" min="-2" pref="17" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -241,6 +247,8 @@
                               <Component id="jLabelUpdate" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                               <Component id="jLabelDelete" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="jLabelBlock" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jLabelFavourite" alignment="1" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jButtonSearch" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -254,8 +262,7 @@
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="jLabelBlock" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabelFavourite" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jLabelWelcome" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -268,11 +275,11 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Times New Roman" size="12" style="3"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Search"/>
               </Properties>
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jtxtSeachMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtxtSeachActionPerformed"/>
+                <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtxtSeachKeyPressed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLSearchIcon">
@@ -338,6 +345,16 @@
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/images/Favourites.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelFavouriteMouseClicked"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabelWelcome">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Times New Roman" size="16" style="3"/>
                 </Property>
               </Properties>
             </Component>

@@ -34,6 +34,7 @@ public class Contacts extends javax.swing.JFrame {
     public Contacts(String user) {
         initComponents();
         this.user=user;
+        jLabelWelcome.setText("Welcome  " + user +"!");
           try {
 //            Class.forName("com.mysql.jdbc.Driver");
             String db = "jdbc:mysql://localhost:3306/PhoneBook";
@@ -92,6 +93,7 @@ public class Contacts extends javax.swing.JFrame {
         jLabelDelete = new javax.swing.JLabel();
         jLabelBlock = new javax.swing.JLabel();
         jLabelFavourite = new javax.swing.JLabel();
+        jLabelWelcome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -102,6 +104,7 @@ public class Contacts extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("PhoneBook-All Contacts");
+        setResizable(false);
 
         panelMain.setBackground(new java.awt.Color(107, 241, 248));
         panelMain.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
@@ -160,7 +163,6 @@ public class Contacts extends javax.swing.JFrame {
         jPanelSearch.setBackground(new java.awt.Color(204, 204, 204));
 
         jtxtSeach.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jtxtSeach.setText("Search");
         jtxtSeach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtxtSeachMouseClicked(evt);
@@ -169,6 +171,11 @@ public class Contacts extends javax.swing.JFrame {
         jtxtSeach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtSeachActionPerformed(evt);
+            }
+        });
+        jtxtSeach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtSeachKeyPressed(evt);
             }
         });
 
@@ -216,6 +223,13 @@ public class Contacts extends javax.swing.JFrame {
         });
 
         jLabelFavourite.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Favourites.png"))); // NOI18N
+        jLabelFavourite.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelFavouriteMouseClicked(evt);
+            }
+        });
+
+        jLabelWelcome.setFont(new java.awt.Font("Times New Roman", 3, 16)); // NOI18N
 
         javax.swing.GroupLayout jPanelSearchLayout = new javax.swing.GroupLayout(jPanelSearch);
         jPanelSearch.setLayout(jPanelSearchLayout);
@@ -232,6 +246,8 @@ public class Contacts extends javax.swing.JFrame {
                 .addComponent(jLabelBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabelFavourite)
+                .addGap(39, 39, 39)
+                .addComponent(jLabelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -249,6 +265,8 @@ public class Contacts extends javax.swing.JFrame {
                         .addComponent(jLabelAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelBlock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelFavourite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelSearchLayout.createSequentialGroup()
                         .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonSearch)
@@ -258,8 +276,7 @@ public class Contacts extends javax.swing.JFrame {
                                     .addComponent(jLSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jtxtSeach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabelBlock, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelFavourite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -300,7 +317,12 @@ public class Contacts extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MenuHome.setText("Home ");
+        MenuHome.setText("New");
+        MenuHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuHomeMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(MenuHome);
 
         menuSignOut.setText("Sign Out");
@@ -509,7 +531,7 @@ public class Contacts extends javax.swing.JFrame {
        try
        {
            con = DriverManager.getConnection(db,"root","root");
-           String query = "update contacts set blocked = 1 where phone_no = ? and username = ?";
+           String query = "update contacts set blocked = 1,favourite = 0 where phone_no = ? and username = ?";
            PreparedStatement pstmt = con.prepareStatement(query);
            pstmt.setString(1,phoneNo);
            pstmt.setString(2, user);
@@ -537,6 +559,58 @@ public class Contacts extends javax.swing.JFrame {
        }
       }
     }//GEN-LAST:event_jLabelBlockMouseClicked
+
+    private void jLabelFavouriteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelFavouriteMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel tblModel = (DefaultTableModel)jTable1.getModel();
+        int selectedRow = jTable1.getSelectedRow();
+        if(selectedRow == -1){
+             JOptionPane.showMessageDialog(this, "Please Select Contact!");
+        } 
+        else{
+            String phoneNo = tblModel.getValueAt(jTable1.getSelectedRow(), 2).toString(); 
+            String db = "jdbc:mysql://localhost:3306/PhoneBook"; 
+            java.sql.Connection con = null;
+       try
+       {
+           con = DriverManager.getConnection(db,"root","root");
+           String query = "update contacts set favourite = 1 where phone_no = ? and username = ?";
+           PreparedStatement pstmt = con.prepareStatement(query);
+           pstmt.setString(1,phoneNo);
+           pstmt.setString(2, user);
+           int rows = pstmt.executeUpdate();
+           if(rows > 0){
+               JOptionPane.showMessageDialog(this,"added to favourites!");
+           }
+           else{
+               JOptionPane.showMessageDialog(this,"Error Try again !");
+           }
+       }
+       catch(SQLException ex){
+           ex.printStackTrace();
+       }
+       finally{
+          try{
+           if(con != null){
+               con.close();
+               con = null;
+           }
+          }
+          catch(SQLException ex){
+              ex.printStackTrace();
+          }
+       }
+      }
+    }//GEN-LAST:event_jLabelFavouriteMouseClicked
+
+    private void jtxtSeachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtSeachKeyPressed
+        if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)jButtonSearchActionPerformed(null);
+
+    }//GEN-LAST:event_jtxtSeachKeyPressed
+
+    private void MenuHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuHomeMouseClicked
+        new login().setVisible(true);
+    }//GEN-LAST:event_MenuHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -589,6 +663,7 @@ public class Contacts extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDelete;
     private javax.swing.JLabel jLabelFavourite;
     private javax.swing.JLabel jLabelUpdate;
+    private javax.swing.JLabel jLabelWelcome;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanelBottom;
     private javax.swing.JPanel jPanelSearch;

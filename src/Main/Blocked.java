@@ -34,6 +34,7 @@ public class Blocked extends javax.swing.JFrame {
      */
     public Blocked(String user) {
         initComponents();
+        jLabelWelcome.setText("Welcome  " + user +"!");
         this.user=user;
           try {
 //            Class.forName("com.mysql.jdbc.Driver");
@@ -90,6 +91,7 @@ public class Blocked extends javax.swing.JFrame {
         jButtonSearch = new javax.swing.JButton();
         jLabelUnblock = new javax.swing.JLabel();
         jLabelDelete = new javax.swing.JLabel();
+        jLabelWelcome = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -99,7 +101,7 @@ public class Blocked extends javax.swing.JFrame {
         menuHelp = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("PhoneBook-All Contacts");
+        setTitle("PhoneBook-Blocked");
 
         panelMain.setBackground(new java.awt.Color(107, 241, 248));
         panelMain.setBorder(javax.swing.BorderFactory.createCompoundBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED), javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0))));
@@ -158,7 +160,6 @@ public class Blocked extends javax.swing.JFrame {
         jPanelSearch.setBackground(new java.awt.Color(204, 204, 204));
 
         jtxtSeach.setFont(new java.awt.Font("Times New Roman", 3, 12)); // NOI18N
-        jtxtSeach.setText("Search");
         jtxtSeach.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jtxtSeachMouseClicked(evt);
@@ -167,6 +168,11 @@ public class Blocked extends javax.swing.JFrame {
         jtxtSeach.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxtSeachActionPerformed(evt);
+            }
+        });
+        jtxtSeach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtxtSeachKeyPressed(evt);
             }
         });
 
@@ -199,6 +205,8 @@ public class Blocked extends javax.swing.JFrame {
             }
         });
 
+        jLabelWelcome.setFont(new java.awt.Font("Times New Roman", 3, 16)); // NOI18N
+
         javax.swing.GroupLayout jPanelSearchLayout = new javax.swing.GroupLayout(jPanelSearch);
         jPanelSearch.setLayout(jPanelSearchLayout);
         jPanelSearchLayout.setHorizontalGroup(
@@ -208,6 +216,8 @@ public class Blocked extends javax.swing.JFrame {
                 .addComponent(jLabelUnblock, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabelDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152)
+                .addComponent(jLabelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -229,7 +239,9 @@ public class Blocked extends javax.swing.JFrame {
                             .addComponent(jButtonSearch)
                             .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jtxtSeach, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanelSearchLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLSearchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -271,7 +283,12 @@ public class Blocked extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        MenuHome.setText("Home ");
+        MenuHome.setText("New");
+        MenuHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuHomeMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(MenuHome);
 
         menuSignOut.setText("Sign Out");
@@ -478,6 +495,15 @@ public class Blocked extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_menuHelpMouseClicked
 
+    private void jtxtSeachKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtSeachKeyPressed
+       if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER)jButtonSearchActionPerformed(null);
+
+    }//GEN-LAST:event_jtxtSeachKeyPressed
+
+    private void MenuHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuHomeMouseClicked
+       new login().setVisible(true);
+    }//GEN-LAST:event_MenuHomeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -526,6 +552,7 @@ public class Blocked extends javax.swing.JFrame {
     private javax.swing.JLabel jLSearchIcon;
     private javax.swing.JLabel jLabelDelete;
     private javax.swing.JLabel jLabelUnblock;
+    private javax.swing.JLabel jLabelWelcome;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanelBottom;
     private javax.swing.JPanel jPanelSearch;

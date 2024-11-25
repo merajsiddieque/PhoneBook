@@ -103,7 +103,7 @@ public class login extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("PhoneBook");
+        setTitle("PhoneBook-Login");
         setBackground(new java.awt.Color(0, 255, 255));
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {

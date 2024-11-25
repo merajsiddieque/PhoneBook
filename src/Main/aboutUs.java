@@ -39,6 +39,8 @@ public class aboutUs extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PhoneBook-AboutUs");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(103, 107, 107));
 
